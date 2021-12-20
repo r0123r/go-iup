@@ -12,7 +12,7 @@ package iuptuio
 #include <iuptuio.h>
 */
 import "C"
-import "github.com/visualfc/go-iup/iup"
+import "github.com/r0123r/go-iup/iup"
 
 func Open() *iup.Error {
 	r := C.IupTuioOpen()

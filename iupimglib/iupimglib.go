@@ -12,7 +12,7 @@ package iupimglib
 #include <iup.h>
 */
 import "C"
-import "github.com/visualfc/go-iup/iup"
+import "github.com/r0123r/go-iup/iup"
 
 func Open() *iup.Error {
 	C.IupImageLibOpen()

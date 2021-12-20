@@ -1,5 +1,5 @@
 // Copyright (C) 2011-2012 visualfc. All rights reserved.
-// Use of this source code is governed by a MIT license 
+// Use of this source code is governed by a MIT license
 // that can be found in the COPYRIGHT file.
 
 package iup
@@ -435,7 +435,7 @@ func (h *Handle) SetAttribute(name string, value string) {
 	defer FreeCS(cname)
 	cvalue := NewCS(value)
 	defer FreeCS(cvalue)
-	C.IupStoreAttribute(h.p, cname, cvalue)
+	C.IupSetStrAttribute(h.p, cname, cvalue)
 }
 
 func (h *Handle) GetAttribute(name string) string {

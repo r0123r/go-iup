@@ -1,5 +1,5 @@
 // Copyright (C) 2011-2012 visualfc. All rights reserved.
-// Use of this source code is governed by a MIT license 
+// Use of this source code is governed by a MIT license
 // that can be found in the COPYRIGHT file.
 
 package iup
@@ -174,8 +174,8 @@ func LayoutDialog(h IHandle) IHandle {
 	return toHandle(C.IupLayoutDialog(toNative(h)))
 }
 
-func ElementPropertiesDialog(h IHandle) IHandle {
-	return toHandle(C.IupElementPropertiesDialog(toNative(h)))
+func ElementPropertiesDialog(parent, elem IHandle) IHandle {
+	return toHandle(C.IupElementPropertiesDialog(toNative(parent), toNative(elem)))
 }
 
 func Image(width, height int, pixels []byte) IHandle {
@@ -190,12 +190,12 @@ func ImageRGBA(width, height int, pixels []byte) IHandle {
 	return toHandle(C.IupImageRGBA(C.int(width), C.int(height), (*C.uchar)(&pixels[0])))
 }
 
-func GetText(title string, data string) (string, bool) {
+func GetText(title string, data string, maxsize int) (string, bool) {
 	t := NewCS(title)
 	defer FreeCS(t)
 	d := NewCSN(data, 4096)
 	defer FreeCS(d)
-	r := C.IupGetText(t, d)
+	r := C.IupGetText(t, d, C.int(maxsize))
 	return FromCS(d), r != 0
 }
 

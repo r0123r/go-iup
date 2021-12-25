@@ -803,6 +803,7 @@ const (
 	MATRIX        = "matrix"
 	OLECONTROL    = "olecontrol"
 	PPLOT         = "plot"
+	PROGRESSDLG   = "progressdlg"
 	WEBBROWSER    = "webbrowser"
 	TUIOCLIENT    = "tuioclient"
 )
@@ -813,6 +814,7 @@ func RegisterAllClass() {
 	RegisterClass("messagedlg", NewClassInfo("messagedlg", messagedlg_SetCallback))
 	RegisterClass("colordlg", NewClassInfo("colordlg", colordlg_SetCallback))
 	RegisterClass("fontdlg", NewClassInfo("fontdlg", fontdlg_SetCallback))
+	RegisterClass("progresslg", NewClassInfo("progressdlg", fontdlg_SetCallback))
 	RegisterClass("fill", NewClassInfo("fill", fill_SetCallback))
 	RegisterClass("hbox", NewClassInfo("hbox", hbox_SetCallback))
 	RegisterClass("vbox", NewClassInfo("vbox", vbox_SetCallback))
@@ -916,6 +918,13 @@ func ColorDlg(a ...interface{}) *Handle {
 // Callback HELP_CB : func(arg *CommonHelp)
 func FontDlg(a ...interface{}) *Handle {
 	return New(FONTDLG, a...)
+}
+
+// Iup control ProgressDlg
+//
+// Callback HELP_CB : func(arg *CommonHelp)
+func ProgressDlg(a ...interface{}) *Handle {
+	return New(PROGRESSDLG, a...)
 }
 
 // Iup control Fill

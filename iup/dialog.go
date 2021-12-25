@@ -120,9 +120,9 @@ func GetParam(title string, format string, out ...interface{}) bool {
 				*p = 0
 			}
 			args[i] = unsafe.Pointer(p)
-		case *int:
+		case *int32:
 			args[i] = unsafe.Pointer(v)
-		case *uint:
+		case *uint32:
 			args[i] = unsafe.Pointer(v)
 		case *float32:
 			args[i] = unsafe.Pointer(v)
@@ -151,7 +151,7 @@ func GetParam(title string, format string, out ...interface{}) bool {
 	return true
 }
 
-func ListDialog(typ int, title string, list []string, opt, max_col, max_lin int, marks []int) int {
+func ListDialog(typ int, title string, list []string, opt, max_col, max_lin int, marks []int32) int {
 	t := NewCS(title)
 	defer FreeCS(t)
 
@@ -190,84 +190,14 @@ func ImageRGBA(width, height int, pixels []byte) IHandle {
 	return toHandle(C.IupImageRGBA(C.int(width), C.int(height), (*C.uchar)(&pixels[0])))
 }
 
-func GetText(title string, data string, maxsize int) (string, bool) {
+func GetText(title string, data string) (string, bool) {
 	t := NewCS(title)
 	defer FreeCS(t)
 	d := NewCSN(data, 4096)
 	defer FreeCS(d)
-	r := C.IupGetText(t, d, C.int(maxsize))
+	r := C.IupGetText(t, d, C.int(4096))
 	return FromCS(d), r != 0
 }
-
-/*
-
-func GetText(title, value string) (bool, string) {
-	return GetTextParam(title, value, "OK", "Cancel")
-}
-func GetTextParam(title, value, title_ok, title_cancel string) (bool, string) {
-	text := Text(
-		Attrs("MULTILINE", "YES",
-			"EXPAND", "YES",
-			"VALUE", value,
-			"FONT", "Courier,12",
-			"VISIBLELINES", "10",
-			"VISIBLECOLUMNS", "50",
-		),
-	)
-
-	ok := Button(
-		Attr("PADDING", "20x5"),
-		Attr("TITLE", title_ok),
-		func(arg *ButtonAction) {
-			arg.Sender.GetDialog().SetAttribute("STATUS", "1")
-			arg.Return = CLOSE
-		},
-	)
-
-	cancel := Button(
-		Attr("PADDING", "20x5"),
-		Attr("TITLE", title_cancel),
-		func(arg *ButtonAction) {
-			arg.Sender.GetDialog().SetAttribute("STATUS", "-1")
-			arg.Return = CLOSE
-		},
-	)
-
-	dlg := Dialog(
-		"MINBOX=NO,MAXBOX=NO,SIZE=200x150",
-		Attr("TITLE", title),
-		Attr("ICON", GetGlobal("ICON")),
-		Attr("PARENTDIALOG", GetGlobal("PARENTDIALOG")),
-		Vbox(
-			"MARGIN=10x10",
-			"GAP=10",
-			text,
-			Hbox(
-				"MARGIN=0x0",
-				"NORMALIZESIZE=HORZONTAL",
-				Fill(),
-				ok,
-				cancel,
-			),
-		),
-	)
-	defer dlg.Destroy()
-	dlg.SetAttributeHandle("DEFAULTENTER", ok)
-	dlg.SetAttributeHandle("DEFAULTESC", cancel)
-
-	dlg.Map()
-
-	text.SetAttribute("VISIBLELINES", "")
-	text.SetAttribute("VISIBLECOLUMNS", "")
-
-	dlg.Popup(CENTERPARENT, CENTERPARENT)
-	if dlg.GetAttribute("STATUS") == "-1" {
-		return false, ""
-	}
-	return true, text.GetAttribute("VALUE")
-}
-
-*/
 
 func Help(url string) {
 	curl := NewCS(url)

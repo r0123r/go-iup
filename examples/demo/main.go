@@ -97,7 +97,8 @@ func ui() {
 		"SIZE=350x200",
 		"SHRINK=YES",
 		"MARGIN=10x10",
-		"FULLSCREEN=YES",
+		"PLACEMENT=MAXIMIZED",
+		//"FULLSCREEN=YES",
 		iup.Tabs(
 			vbox1,
 			vbox2,
@@ -111,7 +112,6 @@ func ui() {
 		),
 	)
 	dlg.Show()
-
 	tree.SetAttribute("ADDBRANCH", "Item2")
 	tree.SetAttribute("ADDLEAF1", "leaf3")
 	tree.SetAttribute("ADDLEAF2", "leaf4")

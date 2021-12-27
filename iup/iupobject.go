@@ -180,7 +180,7 @@ static void iupSetSubMenuHighlight(Ihandle* ih)
 extern int goTimerAction(void*);
 static void iupSetTimerAction(Ihandle* ih)
 {
-	IupSetCallback(ih,IUP_ACTION,(Icallback)&goTimerAction);
+	IupSetCallback(ih,IUP_ACTION_CB,(Icallback)&goTimerAction);
 }
 
 extern int goButtonAction(void*);

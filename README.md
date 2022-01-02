@@ -1,6 +1,6 @@
 ## README for GO-IUP
   GO-IUP is a IUP golang binding
-  https://github.com/visualfc/go-iup
+  https://github.com/r0123r/go-iup
 
 
 ## README for IUP
@@ -22,3 +22,6 @@
 - im-3.15_Win64_dllw6_lib.zip
 - iup-3.30_Win64_dllw6_lib.zip
 
+## Exec
+
+Добавить в %PATH% пути к библотекам или скопировать *.dll в папку запуска

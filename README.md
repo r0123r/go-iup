@@ -1,9 +1,9 @@
-README for GO-IUP
+## README for GO-IUP
   GO-IUP is a IUP golang binding
   https://github.com/visualfc/go-iup
 
 
-README for IUP
+## README for IUP
   http://www.tecgraf.puc-rio.br/iup
   IUP is a portable toolkit for building graphical user interfaces. It offers a configuration API in three basic languages: C, Lua and LED. IUP's purpose is to allow a program to be executed in different systems without any modification, therefore it is highly portable. Its main advantages are:
     * high performance, due to the fact that it uses native interface elements.
@@ -14,7 +14,7 @@ README for IUP
   For complete information, visit IUP's web site at http://www.tecgraf.puc-rio.br/iup
   or access its documentation in the HTML folder.
 
-#Build
+## Build
 
 Рядом с каталогом go-iup
 создать libs/cd,libs/iup,libs/im - в них распаковать архивы сборок библиотек

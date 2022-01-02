@@ -17,8 +17,8 @@
 ## Build
 
 Рядом с каталогом go-iup
-создать libs/cd,libs/iup,libs/im - в них распаковать архивы сборок библиотек
-cd-5.14_Win64_dllw6_lib.zip
-im-3.15_Win64_dllw6_lib.zip
-iup-3.30_Win64_dllw6_lib.zip
+  создать libs/cd,libs/iup,libs/im - в них распаковать архивы сборок библиотек
+  cd-5.14_Win64_dllw6_lib.zip
+  im-3.15_Win64_dllw6_lib.zip
+  iup-3.30_Win64_dllw6_lib.zip
 (end of README)

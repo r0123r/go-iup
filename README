@@ -14,7 +14,7 @@ README for IUP
   For complete information, visit IUP's web site at http://www.tecgraf.puc-rio.br/iup
   or access its documentation in the HTML folder.
 
-# Build
+#Build
 
 Рядом с каталогом go-iup
 создать libs/cd,libs/iup,libs/im - в них распаковать архивы сборок библиотек

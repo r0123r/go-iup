@@ -103,19 +103,20 @@ func (k KeyState) Xkey() int {
 }
 
 func (k KeyState) IsShift() bool {
-	return k > 256 && k < 512
+	return (k & 0x10000000) != 0
 }
 
 func (k KeyState) IsCtrl() bool {
-	return k > 512 && k < 768
+	return (k & 0x20000000) != 0
+	//return k > 512 && k < 768
 }
 
 func (k KeyState) IsAlt() bool {
-	return k > 768 && k < 1024
+	return (k & 0x40000000) != 0
 }
 
 func (k KeyState) IsSys() bool {
-	return k > 1024 && k < 1280
+	return (k & 0x80000000) != 0
 }
 
 /************************************************************************/

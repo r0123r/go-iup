@@ -1,16 +1,17 @@
 // Copyright (C) 2011-2012 visualfc. All rights reserved.
-// Use of this source code is governed by a MIT license 
+// Use of this source code is governed by a MIT license
 // that can be found in the COPYRIGHT file.
 
 package main
 
 import (
 	"fmt"
-	"github.com/visualfc/go-iup/iup"
 	"io/ioutil"
 	"runtime"
 	"sync"
 	"time"
+
+	"github.com/r0123r/go-iup/iup"
 )
 
 type Notepad struct {
@@ -123,6 +124,7 @@ func (pad *Notepad) init() *Notepad {
 			pad.sts2.SetAttribute("TITLE", fmt.Sprintf("Lin:%d  Col:%d ", arg.Lin, arg.Col))
 		},
 		func(arg *iup.CommonKeyAny) {
+			fmt.Println(arg.Key)
 			key := iup.KeyState(arg.Key)
 			if !key.IsCtrl() {
 				return
@@ -135,6 +137,7 @@ func (pad *Notepad) init() *Notepad {
 			case 'S':
 				pad.Save()
 			default:
+				fmt.Println("CTRL", key.Key())
 				return
 			}
 		},

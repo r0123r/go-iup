@@ -37,10 +37,22 @@ func ui() {
 	pr := iup.ProgressBar("MIN=0,MAX=100,VALUE=50,EXPAND=HORIZONTAL")
 	vbox1 := iup.Vbox(
 		"TABTITLE=Standard,MARGIN=0x0,GAP=5",
-		iup.Frame("TITLE=Frame,EXPAND=YES",
-			iup.Vbox(
-				iup.Label("TITLE=\"List Label\""),
-				iup.List("EXPAND=YES,1=list1", "2=list2", "3=list3"),
+		iup.Split("ORIENTATION=VERTICAL,VALUE=500",
+			iup.Frame("TITLE=Frame,EXPAND=YES",
+				iup.Vbox(
+					iup.Label("TITLE=\"List Label\""),
+					iup.List("EXPAND=YES,1=list1", "2=list2", "3=list3"),
+				),
+			),
+			iup.Frame(
+				iup.Radio(
+					iup.Hbox(
+						iup.Toggle("TITLE=1"),
+						iup.Toggle("TITLE=2"),
+						iup.Toggle("TITLE=3"),
+						iup.Toggle("TITLE=4"),
+					),
+				),
 			),
 		),
 		iup.Hbox(
@@ -51,22 +63,14 @@ func ui() {
 			iup.Toggle("TITLE=Toggle,EXPAND=VERTICAL"),
 			iup.Val("MIN=1,MAX=100"),
 		),
-		iup.Frame(
-			iup.Radio(
-				iup.Hbox(
-					iup.Toggle("TITLE=1"),
-					iup.Toggle("TITLE=2"),
-					iup.Toggle("TITLE=3"),
-					iup.Toggle("TITLE=4"),
-				),
-			),
-		),
 		iup.Text("EXPAND=HORIZONTAL,SPIN=YES,SPINVALUE=50", func(arg *iup.TextSpin) {
 			pr.SetAttribute("VALUE", fmt.Sprint(arg.Inc))
 			arg.Return = iup.DEFAULT
 		}),
 		pr,
-		tree,
+		iup.Sbox("DIRECTION=NORTH,SIZE=0x800",
+			tree,
+		),
 	)
 	vbox2 := iup.Vbox(
 		"TABTITLE=Text",
@@ -91,7 +95,26 @@ func ui() {
 				fmt.Printf("R=%d,G=%d,B=%d\n", arg.R, arg.G, arg.B)
 			},
 		),
+		iup.Frame(`TITLE="Выбор цвета в палитре",EXPAND=YES`,
+			iup.Colorbar(
+				"ORIENTATION=HORIZONTAL",
+				"NUM_PARTS=2",
+				"SHOW_SECONDARY=YES",
+				func(arg *iup.ColorbarSelect) {
+					fmt.Println(arg)
+				},
+			),
+		),
 	)
+	file_menu := iup.Menu(
+		iup.Item("Open"),
+		iup.Item("SaveAs"),
+		iup.Separator(),
+		iup.Item("Exit", func(arg *iup.ItemAction) {
+
+		}),
+	)
+
 	dlg := iup.Dialog(
 		iup.Attr("TITLE", "GO-IUP Demo 1.0"),
 		"SIZE=350x200",
@@ -111,6 +134,7 @@ func ui() {
 			vbox9("Messagebox"),
 		),
 	)
+	dlg.SetAttributeHandle("MENU", file_menu)
 	dlg.Show()
 	tree.SetAttribute("ADDBRANCH", "Item2")
 	tree.SetAttribute("ADDLEAF1", "leaf3")

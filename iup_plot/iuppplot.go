@@ -46,8 +46,8 @@ func (h *IupPlot) Begin(strXdata int) {
 	C.IupPlotBegin(toNative(h), C.int(strXdata))
 }
 
-func (h *IupPlot) End() {
-	C.IupPlotEnd(toNative(h))
+func (h *IupPlot) End() int {
+	return int(C.IupPlotEnd(toNative(h)))
 }
 
 func (h *IupPlot) Add(x, y float64) {

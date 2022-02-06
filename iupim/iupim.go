@@ -13,10 +13,12 @@ package iupim
 #include <iupim.h>
 */
 import "C"
-import "github.com/r0123r/go-iup/iup"
+import (
+	"github.com/r0123r/go-iup/iup"
+)
 
-func LoadImage(filename string) *iup.Handle {
+func LoadImage(filename string) *C.Ihandle {
 	cname := iup.NewCS(filename)
 	defer iup.FreeCS(cname)
-	return iup.NewHandle(C.IupLoadImage((*C.char)(cname)))
+	return C.IupLoadImage((*C.char)(cname))
 }

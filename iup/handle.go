@@ -221,10 +221,10 @@ func SetHandle(name string, h IHandle) {
 	C.IupSetHandle(cname, toNative(h))
 }
 
-func GetHandle(name string) IHandle {
+func GetHandle(name string) *Handle {
 	cname := NewCS(name)
 	defer FreeCS(cname)
-	return toHandle(C.IupGetHandle(cname))
+	return toHandle(C.IupGetHandle(cname)).(*Handle)
 }
 
 func GetName(h IHandle) string {
@@ -285,8 +285,9 @@ func (h *Handle) GetClassInfo() *ClassInfo {
 	return nil
 }
 
-func (h *Handle) SetName(name string) {
+func (h *Handle) SetName(name string) *Handle {
 	SetHandle(name, h)
+	return h
 }
 
 func (h *Handle) GetName() string {

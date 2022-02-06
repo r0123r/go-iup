@@ -1,12 +1,13 @@
 // Copyright (C) 2011-2012 visualfc. All rights reserved.
-// Use of this source code is governed by a MIT license 
+// Use of this source code is governed by a MIT license
 // that can be found in the COPYRIGHT file.
 
 package main
 
 import (
 	"fmt"
-	"github.com/visualfc/go-iup/iup"
+
+	"github.com/r0123r/go-iup/iup"
 )
 
 func main() {

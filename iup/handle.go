@@ -431,10 +431,10 @@ func (h *Handle) SetAttrs(a ...string) error {
 	return nil
 }
 
-func (h *Handle) SetAttribute(name string, value string) {
+func (h *Handle) SetAttribute(name string, value interface{}) {
 	cname := NewCS(name)
 	defer FreeCS(cname)
-	cvalue := NewCS(value)
+	cvalue := NewCS(fmt.Sprint(value))
 	defer FreeCS(cvalue)
 	C.IupSetStrAttribute(h.p, cname, cvalue)
 }

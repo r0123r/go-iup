@@ -261,7 +261,7 @@ func button_SetCallback(h *Handle, fn interface{}) bool {
 	return true
 }
 
-func canvas_SetCallback(h *Handle, fn interface{}) bool {
+func Canvas_SetCallback(h *Handle, fn interface{}) bool {
 	switch fn.(type) {
 	case func(*CanvasAction):
 		C.iupSetCanvasAction(h.p)

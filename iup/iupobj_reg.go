@@ -75,7 +75,7 @@ func RegisterAllClass() {
 	RegisterClass("timer", NewClassInfo("timer", timer_SetCallback))
 	RegisterClass("user", NewClassInfo("user", user_SetCallback))
 	RegisterClass("button", NewClassInfo("button", button_SetCallback))
-	RegisterClass("canvas", NewClassInfo("canvas", canvas_SetCallback))
+	RegisterClass("canvas", NewClassInfo("canvas", Canvas_SetCallback))
 	RegisterClass("frame", NewClassInfo("frame", frame_SetCallback))
 	RegisterClass("label", NewClassInfo("label", label_SetCallback))
 	RegisterClass("list", NewClassInfo("list", list_SetCallback))
